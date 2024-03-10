@@ -18,7 +18,7 @@ import path from 'path';
 
 const appConfig = (app) => {
    const __dirname = dirname(fileURLToPath(import.meta.url));
-   app.use(express.static(path.resolve(__dirname, '../Note-client/dist')));
+   app.use(express.static(path.resolve(__dirname, '../Note-Client/dist')));
    app.use(cookieparser(process.env.JWT_SECRET))
    const whitelist =  ["http://localhost:5173"];
    const opt = {
@@ -69,7 +69,7 @@ const appConfig = (app) => {
        .use("/api",authenticated,projectRouter)
       //  .use("/api",projectRouter)
    app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, '../Note-client/dist', 'index.html'));
+      res.sendFile(path.resolve(__dirname, '../Note-Client/dist', 'index.html'));
    });
     // not-found and error route
     app.use("*",notFoundHandler)
