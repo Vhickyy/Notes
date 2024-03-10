@@ -12,7 +12,6 @@ import projectRouter from "./routes/projectRoute.js";
 import userRouter from "./routes/userRoute.js";
 import googleRouter from "./routes/googleRoute.js";
 import { authenticated } from "./middlewares/authMiddleware.js";
-import express from "express"
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import path from 'path';
