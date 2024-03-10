@@ -2,10 +2,10 @@ import "express-async-errors"
 import * as dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
-import appConfig from "./app.js";
-import "./services/passport.js"
+import appConfig from "./Note-backend/app.js";
+import "./Note-backend/services/passport.js"
 import {Server} from "socket.io"
-import Project from "./models/projectModel.js";
+import Project from "./Note-backend/models/projectModel.js";
 
 dotenv.config()
 const app = express();

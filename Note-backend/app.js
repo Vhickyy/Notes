@@ -12,8 +12,14 @@ import projectRouter from "./routes/projectRoute.js";
 import userRouter from "./routes/userRoute.js";
 import googleRouter from "./routes/googleRoute.js";
 import { authenticated } from "./middlewares/authMiddleware.js";
+import express from "express"
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import path from 'path';
 
 const appConfig = (app) => {
+   const __dirname = dirname(fileURLToPath(import.meta.url));
+   app.use(express.static(path.resolve(__dirname, '../Note-client/dist')));
    app.use(cookieparser(process.env.JWT_SECRET))
    const whitelist =  ["http://localhost:5173"];
    const opt = {
@@ -63,7 +69,9 @@ const appConfig = (app) => {
        .use("/api",authenticated,userRouter)
        .use("/api",authenticated,projectRouter)
       //  .use("/api",projectRouter)
-   
+   app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, './Note-client/dist', 'index.html'));
+   });
     // not-found and error route
     app.use("*",notFoundHandler)
        .use(errorHandler);
