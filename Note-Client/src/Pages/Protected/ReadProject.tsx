@@ -28,7 +28,11 @@ const ReadProject = () => {
   // },[])
 
   useEffect(()=>{
+    console.log("hello");
+    
     const s = io("/");
+    console.log("hello2");
+    
     setSocket(s)
     return () => {
       s.disconnect();
