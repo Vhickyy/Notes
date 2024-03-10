@@ -69,7 +69,7 @@ const appConfig = (app) => {
        .use("/api",authenticated,projectRouter)
       //  .use("/api",projectRouter)
    app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, './Note-client/dist', 'index.html'));
+      res.sendFile(path.resolve(__dirname, '../Note-client/dist', 'index.html'));
    });
     // not-found and error route
     app.use("*",notFoundHandler)
