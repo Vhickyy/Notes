@@ -35,28 +35,8 @@ const ReadProject = () => {
     }
   },[])
 
-  // useEffect(()=>{
-  //   const getAudio = async ()=>{
-  //     try {
-  //       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-  //       const audioTrack = stream.getAudioTracks()[0];
-  //       setLocalAudio(audioTrack)
-  //       console.log(audioTrack);
-  //     } catch (error) {
-  //       console.log(error);
-        
-  //     }
-  //   }
-  //   getAudio()
-  // },[])
 
   useEffect(()=>{
-    // socket?.on("snf offer", async()=>{
-    //   const peer = new RTCPeerConnection()
-    //   setPc(peer)
-    //   const sdp = await pc?.createOffer()
-    //   socket.emit("ss",{sdp})
-    // })
     socket?.emit("join project",projectId);
     const editor = quillRef?.current?.getEditor();
     const loadDocument = (document: any) => {
