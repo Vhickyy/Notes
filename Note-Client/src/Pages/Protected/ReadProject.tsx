@@ -56,11 +56,6 @@ const ReadProject = () => {
     }; 
     socket?.on("send changes", realTimeNote);
 
-    socket?.on("talking", (data:any)=>{
-      console.log(data);
-      
-    });
-
     return () => {
       clearInterval(timer);
       socket?.off("send changes", realTimeNote);

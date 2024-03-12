@@ -16,15 +16,21 @@ router.get("/success", (req,res) => {
     res.cookie("token", token, {
         httpOnly: true,
         expires: new Date(Date.now() + (24 * 60 * 60 * 1000)),
-        secure: process.env.NODE_ENV === "production"
+        // secure: true,
+        // sameSite: 'none',
+        secure: process.env.NODE_ENV === "production",
+        // domain: ".onrender.com",
+        signed: true
     })
-    return res.redirect("http://localhost:5173/dashboard")
+    return res.redirect("./Note-client/dashboard")
 })
 
 router.get('/google/callback', 
   passport.authenticate('google', { 
-    failureRedirect: 'http://localhost:8000/auth/failed' ,
-    successRedirect: "http://localhost:8000/auth/success"
+    // failureRedirect: 'http://localhost:8000/auth/failed' ,
+    // successRedirect: "http://localhost:8000/auth/success"
+    failureRedirect: '/auth/failed' ,
+    successRedirect: "/auth/success"
     })
 );
 
