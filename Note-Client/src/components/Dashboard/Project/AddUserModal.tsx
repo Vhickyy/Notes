@@ -30,10 +30,10 @@ const AddUserModal = ({addUserModal,setAddUserModal}:{addUserModal: { open: bool
     
     const addUser = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const email = new FormData(e.currentTarget) as unknown as string;
-        // const email = "veevhickyy@gmail.com"
-        console.log(projectId);
+        const formData = new FormData(e.currentTarget);
+        const {email} = Object.fromEntries(formData) as {email:string};
         mutate({id:projectId,email})
+        e.currentTarget.reset();
     }
 
     const {mutate:deleteMember} = useMutation({
